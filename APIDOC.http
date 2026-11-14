@@ -1,0 +1,139 @@
+#========================accounts============================
+#api call for admin creation
+###
+POST http://127.0.0.1:8000/owner/register/
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "email":"admin@gmail.com",
+    "password":"admin@123"
+}
+
+#api call for player creation
+###
+POST http://127.0.0.1:8000/player/register/
+Content-Type: application/json
+
+{
+    "username":"player",
+    "email":"player@gmail.com",
+    "password":"player@123"
+}
+#======================= turf =============================
+
+#api call for listing all turf
+###
+GET http://127.0.0.1:8000/turf/
+Accept: application/json
+Authorization: Basic admin:admin@123
+
+#api call for creating a turf
+###
+POST http://127.0.0.1:8000/turf/
+Content-Type: application/json
+Authorization: Basic admin:admin@123
+
+{
+    "name":"csk",
+    "location":"chavakkad",
+    "address":"dmk,chavakkad,thrissur,kerala",
+    "description":"5s ground",
+    "opening_time":"06:00",
+    "closing_time":"22:45",
+    "day_price":500,
+    "night_price":1000,
+    "facilities":"parking,ground boy support,cafeterea"
+}
+
+#api call for retrieving a turf
+###
+GET http://127.0.0.1:8000/turf/3/
+Accept: application/json
+Authorization: Basic admin:admin@123
+
+#api call for updating a turf
+###
+PUT http://127.0.0.1:8000/turf/3/
+Content-Type: application/json
+Authorization: Basic admin:admin@123
+
+{
+    "name":"dmk",
+    "location":"chavakkad",
+    "address":"dmk,chavakkad,thrissur,kerala",
+    "description":"soil ground 11s",
+    "opening_time":"06:00",
+    "closing_time":"22:45",
+    "day_price":500,
+    "night_price":1250,
+    "facilities":"parking,ground boy support,cafeterea"
+}
+
+#api call for deleing a turf
+###
+DELETE http://127.0.0.1:8000/turf/2/
+Accept: application/json
+Authorization: Basic admin:admin@123
+
+
+#-----------BOOKING------------
+
+#api call for creating a booking
+###
+POST http://127.0.0.1:8000/bookings/
+Content-Type: application/json
+Authorization: Basic player:player@123
+
+{
+    "name":"abinandha",
+    "phone":"1475285286",
+    "email":"abi@gamil.com",
+    "turf":4,
+    "match_date":"2026-11-11",
+    "duration":2,
+    "start_time":"5:00"
+
+}
+
+#api call for fetching a booking
+###
+GET http://127.0.0.1:8000/bookings/3/
+Accept: application/json
+Authorization: Basic player:player@123
+
+
+#api call for updating a booking
+###
+PUT http://127.0.0.1:8000/bookings/1/
+Content-Type: application/json
+Authorization: Basic player:player@123
+
+{
+  "id": "1",
+  "name": "abhishek",
+  "phone": "9497328668",
+  "email": "abhi@gamil.com",
+  "turf": 3,
+  "match_date": "2026-11-07",
+  "duration": 3,
+  "start_time": "07:00:00",
+  "end_time": null,
+  "amount": null
+}
+
+#api call for deleting a booking
+###
+DELETE http://127.0.0.1:8000/bookings/1/
+Accept: application/json
+Authorization: Basic player:player@123
+
+#api call for booking summary
+###
+POST http://127.0.0.1:8000/bookings/summary/
+Content-Type: application/json
+
+{
+    "turf": 3,
+    "match_date": "2026-11-07"
+}
